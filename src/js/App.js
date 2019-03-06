@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import '../App.css';
+import {ItemList, Itemlist} from './components/Itemlist'
 
 class App extends Component {
     render() {
         return (
             <div className="App">
+
                 <form className="form">
                     <div className="inputArea">
+                        <input type="text" className="inputToken js-get-tokenVal" value="" placeholder="Token"/>
                         <input type="text" className="inputText js-get-nameVal" value="" placeholder="Item Name"/>
                         <input type="text" className="inputText js-get-priceVal" value="" placeholder="Item Price"/>
                         <textarea className="inputText textarea js-get-textVal" value="" placeholder="Item Text"/>
@@ -16,11 +19,11 @@ class App extends Component {
                     </div>
                 </form>
                 <div className="searachBox">
-                    <input type="text" className="searchBox__input js-search" value="" placeholder=""/>
+                    <input type="text" className="searchBox__input js-search" value="" placeholder="Item Search"/>
                 </div>
 
                 <div className="itemList">
-                    <ul className="list js-item-list">
+                    <ul className="list js-item_list">
                         <li className="list__item">
                             <span className="img">商品画像</span>
                             <span className="name">商品名</span>
@@ -31,6 +34,8 @@ class App extends Component {
                         </li>
                     </ul>
                 </div>
+                <ItemList/>
+
             </div>
         );
     }
