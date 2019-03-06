@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
+import {ItemList, Itemlist} from './components/Itemlist'
 
 class App extends Component {
     render() {
@@ -22,7 +23,7 @@ class App extends Component {
                 </div>
 
                 <div className="itemList">
-                    <ul className="list js-item-list">
+                    <ul className="list js-item_list">
                         <li className="list__item">
                             <span className="img">商品画像</span>
                             <span className="name">商品名</span>
@@ -33,6 +34,8 @@ class App extends Component {
                         </li>
                     </ul>
                 </div>
+                <ItemList/>
+
             </div>
         );
     }
