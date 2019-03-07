@@ -1,11 +1,11 @@
 import React from 'react';
-import Item from './Item'
-import _ from 'lodash'
+import Item from './Item';
+import _ from 'lodash';
 
 //登録された商品リストを包括するコンポーネント
 export class ItemList extends React.Component{
     constructor(props){
-        super(prosp);
+        super(props);
         this.state = {
             data: [
                 {
@@ -36,13 +36,19 @@ export class ItemList extends React.Component{
     render(){
         let items = [];
         for(let i in this.state.data){
-            items.push()
+            items.push(<Item key={this.state.data[i].id}
+                             id={this.state.data[i].id}
+                             name={this.state.data[i].name}
+                             price={this.price.data[i].price}
+                             text={this.state.data[i].text}
+                             img={this.state.data[i].img}
+            />);
         }
 
         return (
             <ul className="list js-item_list">
                 {items}
             </ul>
-        )
+        );
     }
 }

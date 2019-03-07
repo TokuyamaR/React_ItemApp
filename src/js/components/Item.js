@@ -1,12 +1,14 @@
 import React from 'react';
-import ClassNames from 'classnames';
 
 export default class Item extends React.Component{
     constructor(props){
         super(props);
             this.state = {
                 id: this.props.id,
+                name: this.props.name,
+                price: this.props.price,
                 text: this.props.text,
+                img: this.props.img,
                 editMode: false
             };
             this.handleClickRemove = this.handleClickRemove.bind(this);
@@ -59,4 +61,35 @@ export default class Item extends React.Component{
         console.log('componentWillUnmount');
     }
 
+    // 編集可能か否かで入力欄の状態を変化させる
+    render() {
+        const inputName = (this.state.editMode) ?
+            <input type="text" className="editName" value={this.state.name}
+                   onChange={this.handleChangeName}/> :
+            // 編集ボタンをクリックすると編集可能にするが、うまく動かない場合は調整
+            <span className="name">{this.state.name}</span>;
+        const inputPrice = (this.state.editMode) ?
+            <input type="text" className="editPrice" value={this.state.price}
+                   onChange={this.handleChangePrice}/> :
+            <span className="price">{this.state.price}</span>;
+        const inputText = (this.state.editMode) ?
+            <textarea cols="30" rows="10" className="text" value={this.state.text}
+                      onChange={this.handleChangeText}/> :
+            <span className="text">{this.state.price}</span>;
+        const inputImg = (this.state.editMode) ?
+            <input type="file" className="editImg" value={this.state.img}
+                   onChange={this.handleChangeImg}/> :
+            <img className="img" src={this.state.img}/>;
+
+        return (
+            <li className="list__item">
+                {inputName}
+                {inputPrice}
+                {inputText}
+                {inputImg}
+                <i className="fas fa-edit icon-edit" onClick={this.handleClickShowEdit}/>
+                <i className="fa fa-trash icon-trash" onClick={this.handleClickRemove} aria-hidden="true"/>
+            </li>
+        );
+    }
 }

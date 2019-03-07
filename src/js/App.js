@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import '../App.css';
-import {ItemList, Itemlist} from './components/Itemlist'
+import {ItemList} from './components/ItemList'
 
 class App extends Component {
     render() {
@@ -35,7 +35,6 @@ class App extends Component {
                     </ul>
                 </div>
                 <ItemList/>
-
             </div>
         );
     }
