@@ -31,7 +31,7 @@ export class ItemList extends React.Component{
         let data = _.reject(this.state.data,{'id':id});
         this.setState({
             data: data
-        })
+        });
     }
     render(){
         let items = [];

@@ -39,7 +39,7 @@ export default class Item extends React.Component{
             img:e.target.value
         });
     }
-    handleClickRemove(e){
+    handleClickRemove(){
         this.props.onRemove(this.state.id);
     }
     handleClickShowEdit(){
@@ -79,7 +79,7 @@ export default class Item extends React.Component{
         const inputImg = (this.state.editMode) ?
             <input type="file" className="editImg" value={this.state.img}
                    onChange={this.handleChangeImg}/> :
-            <img className="img" src={this.state.img}/>;
+            <img className="img" src={this.state.img} alt="商品画像"/>;
 
         return (
             <li className="list__item">
@@ -87,7 +87,7 @@ export default class Item extends React.Component{
                 {inputPrice}
                 {inputText}
                 {inputImg}
-                <i className="fas fa-edit icon-edit" onClick={this.handleClickShowEdit}/>
+                <i className="fas fa-edit icon-edit" onClick={this.handleClickShowEdit} aria-hidden="true"/>
                 <i className="fa fa-trash icon-trash" onClick={this.handleClickRemove} aria-hidden="true"/>
             </li>
         );
