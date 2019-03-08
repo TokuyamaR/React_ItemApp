@@ -96,6 +96,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/components/ItemList.js">
+<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="95">
               <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
@@ -104,6 +105,9 @@
               </folding>
             </state>
           </provider>
+=======
+          <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> e9455fb7280eeab6c014b06a89792fb119d5af00
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -311,8 +315,12 @@
     <option name="totallyTimeSpent" value="20281000" />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="0" y="0" width="718" height="900" extended-state="0" />
     <editor active="true" />
+=======
+    <frame x="0" y="0" width="704" height="900" extended-state="6" />
+>>>>>>> e9455fb7280eeab6c014b06a89792fb119d5af00
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24018127" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -380,6 +388,23 @@
     <entry file="file://$PROJECT_DIR$/src/js/components/ItemApp.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/components/ItemList.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/components/Item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -444,8 +469,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/App.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="120">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
+=======
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="330">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+>>>>>>> e9455fb7280eeab6c014b06a89792fb119d5af00
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
