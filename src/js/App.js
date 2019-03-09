@@ -79,9 +79,7 @@ class App extends React.Component {
 
                     <ItemSearch callBackSearch={this.callBackSearch}/>
 
-                    <div className="itemList">
-                        <ItemList data={data} callBackRemoveTask={this.callBackRemoveItem}/>
-                    </div>
+                    <ItemList data={data} callBackRemoveItem={this.callBackRemoveItem}/>
                 </div>
             </div>
         );
