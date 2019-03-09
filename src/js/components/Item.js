@@ -4,43 +4,70 @@ export default class Item extends React.Component{
     constructor(props){
         super(props);
             this.state = {
-                id: this.props.id,
-                name: this.props.name,
-                price: this.props.price,
-                text: this.props.text,
-                img: this.props.img,
+
+                data: {
+                    id: this.props.id,
+                    name: this.props.name,
+                    price: this.props.price,
+                    text: this.props.text,
+                    img: this.props.img,
+                },
                 editMode: false
             };
             this.handleClickRemove = this.handleClickRemove.bind(this);
             this.handleClickShowEdit = this.handleClickShowEdit.bind(this);
             this.handleClickCloseEdit = this.handleClickCloseEdit.bind(this);
-            this.handleChangeName = this.handleChangeName.bind(this);
-            this.handleChangePrice = this.handleChangePrice.bind(this);
-            this.handleChangeText = this.handleChangeText.bind(this);
-            this.handleChangeImg = this.handleChangeImg.bind(this);
+            this.handleChange = this.handleChange.bind(this);
+            // this.handleChangeName = this.handleChangeName.bind(this);
+            // this.handleChangePrice = this.handleChangePrice.bind(this);
+            // this.handleChangeText = this.handleChangeText.bind(this);
+            // this.handleChangeImg = this.handleChangeImg.bind(this);
     }
-    handleChangeName(e){
+    handleChange(e){
+
+        let data = this.state.data;
+
+        switch(e.target.name){
+            case 'name':
+                data.name = e.target.value;
+                break;
+            case 'price':
+                data.price = e.target.value;
+                break;
+            case 'text':
+                data.text = e.target.value;
+                break;
+            case 'img':
+                data.img = e.target.value;
+                break;
+        }
+
         this.setState({
-            name:e.target.value
+            data: data
         });
     }
-    handleChangePrice(e){
-        this.setState({
-            price:e.target.value
-        });
-    }
-    handleChangeText(e){
-        this.setState({
-            text:e.target.value
-        });
-    }
-    handleChangeImg(e){
-        this.setState({
-            img:e.target.value
-        });
-    }
+    // handleChangeName(e){
+    //     this.setState({
+    //         name:e.target.value
+    //     });
+    // }
+    // handleChangePrice(e){
+    //     this.setState({
+    //         price:e.target.value
+    //     });
+    // }
+    // handleChangeText(e){
+    //     this.setState({
+    //         text:e.target.value
+    //     });
+    // }
+    // handleChangeImg(e){
+    //     this.setState({
+    //         img:e.target.value
+    //     });
+    // }
     handleClickRemove(e){
-        this.props.onRemove(this.state.id);
+        this.props.onRemove(this.state.data.id);
     }
     handleClickShowEdit(){
         this.setState({
@@ -64,22 +91,22 @@ export default class Item extends React.Component{
     // 編集可能か否かで入力欄の状態を変化させる
     render() {
         const inputName = (this.state.editMode) ?
-            <input type="text" className="editName" value={this.state.name}
-                   onChange={this.handleChangeName}/> :
+            <input type="text" className="editName" name="name" value={this.state.data.name}
+                   onChange={this.handleChange}/> :
             // 編集ボタンをクリックすると編集可能にするが、うまく動かない場合は調整
-            <span className="name">{this.state.name}</span>;
+            <span className="name">{this.state.data.name}</span>;
         const inputPrice = (this.state.editMode) ?
-            <input type="text" className="editPrice" value={this.state.price}
-                   onChange={this.handleChangePrice}/> :
-            <span className="price">{this.state.price}</span>;
+            <input type="text" className="editPrice" name="price" value={this.state.data.price}
+                   onChange={this.handleChange}/> :
+            <span className="price">{this.state.data.price}</span>;
         const inputText = (this.state.editMode) ?
-            <textarea cols="30" rows="10" className="editText" value={this.state.text}
-                      onChange={this.handleChangeText}/> :
-            <span className="text">{this.state.text}</span>;
+            <textarea cols="30" rows="10" className="editText" name="text" value={this.state.data.text}
+                      onChange={this.handleChange}/> :
+            <span className="text">{this.state.data.text}</span>;
         const inputImg = (this.state.editMode) ?
-            <input type="file" className="editImg" value={this.state.img}
-                   onChange={this.handleChangeImg}/> :
-            <img className="img" src={this.state.img} alt="商品画像"/>;
+            <input type="file" className="editImg" name="img" value={this.state.data.img}
+                   onChange={this.handleChange}/> :
+            <img className="img" src={this.state.data.img} alt="商品画像"/>;
 
         return (
             <li className="list__item">
