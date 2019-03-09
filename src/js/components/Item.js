@@ -39,7 +39,7 @@ export default class Item extends React.Component{
             img:e.target.value
         });
     }
-    handleClickRemove(){
+    handleClickRemove(e){
         this.props.onRemove(this.state.id);
     }
     handleClickShowEdit(){

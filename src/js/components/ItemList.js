@@ -11,6 +11,7 @@ export class ItemList extends React.Component{
     handleRemove(id){
         this.props.callBackRemoveItem(id);
     }
+
     render(){
         let items = [];
         for(let i in this.props.data){
@@ -19,12 +20,12 @@ export class ItemList extends React.Component{
                              name={this.props.data[i].name}
                              price={this.props.data[i].price}
                              text={this.props.data[i].text}
-                             img={this.props.data[i].img}
+                             img={this.props.data[i].img} onRemove={this.handleRemove}
             />);
         }
 
         return (
-            <div>
+            <div className="itemList">
                 <div className="item_list-title left">Item List</div>
 
                 <ul className="list js-item_list">
