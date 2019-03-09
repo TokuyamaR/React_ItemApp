@@ -73,9 +73,9 @@ export default class Item extends React.Component{
                    onChange={this.handleChangePrice}/> :
             <span className="price">{this.state.price}</span>;
         const inputText = (this.state.editMode) ?
-            <textarea cols="30" rows="10" className="text" value={this.state.text}
+            <textarea cols="30" rows="10" className="editText" value={this.state.text}
                       onChange={this.handleChangeText}/> :
-            <span className="text">{this.state.price}</span>;
+            <span className="text">{this.state.text}</span>;
         const inputImg = (this.state.editMode) ?
             <input type="file" className="editImg" value={this.state.img}
                    onChange={this.handleChangeImg}/> :
@@ -87,8 +87,8 @@ export default class Item extends React.Component{
                 {inputPrice}
                 {inputText}
                 {inputImg}
-                <i className="fas fa-edit icon-edit" onClick={this.handleClickShowEdit} aria-hidden="true"/>
                 <i className="fa fa-trash icon-trash" onClick={this.handleClickRemove} aria-hidden="true"/>
+                <i className="fas fa-edit icon-edit" onClick={this.handleClickShowEdit} aria-hidden="true"/>
             </li>
         );
     }
