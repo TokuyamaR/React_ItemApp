@@ -45,18 +45,22 @@ body {
     color: #e8e8e8;
 }
 
-.btn{
+.btn, .close-btn{
     padding: 5px 30px;
     background: #000;
     color: #fff;
     border: none;
-    text-align: right;
+    text-align: center;
     margin: 0;
     font-size: 16px;
 }
 
 .btn:hover{
     cursor: pointer;
+}
+
+.close-btn--none{
+    display: none;
 }
 
 .error{
@@ -123,6 +127,14 @@ body {
 .icon-edit:hover, .icon-trash:hover{
     transform: scale(1.2);
     transition: .5s transform;
+}
+
+.icon-edit--none, .icon-trash--none{
+    display: none;
+}
+
+.edit {
+    border: 1px solid #e8e8e8;
 }
 
 .editName, .editPrice, .editText, .editImg{
