@@ -99,10 +99,10 @@ export default class Item extends React.Component{
             <textarea cols="30" rows="10" className="edit editText" name="text" value={this.state.data.text}
                       onChange={this.handleChange}/> :
             <span className="text">{this.state.data.text}</span>;
-        const inputfile = (this.state.editMode) ?
+        const inputFile = (this.state.editMode) ?
             <input type="file" className="edit editFile" name="file"
                    onChange={this.handleChange}/> :
-            <img className="file" src={this.state.data.file[0]} alt="商品画像"/>;
+            <img className="file" src={this.state.data.file} alt="商品画像"/>;
 
         const classNameBtn = ClassNames({
             'btn close-btn--none': !this.state.editMode,
@@ -125,7 +125,7 @@ export default class Item extends React.Component{
                     {inputName}
                     {inputPrice}
                     {inputText}
-                    {inputfile}
+                    {inputFile}
                     <input type='submit' value='Done' className={classNameBtn} onClick={this.handleClickCloseEdit}/>
                     <i className={classNameIconTrash} onClick={this.handleClickRemove} aria-hidden="true"/>
                     <i className={classNameIconEdit} onClick={this.handleClickShowEdit} aria-hidden="true"/>

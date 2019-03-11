@@ -68,10 +68,13 @@ export default class ItemCreator extends React.Component{
         }
 
         this.setState({
+
+            data: {
                 name: '',
-                price:'',
+                price: '',
                 text: '',
-                file: '',
+                file: ''
+            },
             errMsg:''
         });
         this.props.callBackAddItem(nameVal, priceVal, textVal, fileVal);
@@ -91,7 +94,7 @@ export default class ItemCreator extends React.Component{
                       <input type="text" className="inputText js-get-nameVal" name="name" value={this.state.data.name} placeholder="Item Name" onChange={this.handleChange}/>
                       <input type="text" className="inputText js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
                       <textarea className="inputText textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
-                      <input type="file" ref="file" className="inputFile js-get-fileVal" name="file" onChange={this.handleChange}/>
+                      <input type="file" className="inputFile js-get-fileVal" name="file" onChange={this.handleChange}/>
                       {errMsg}
                   <input className="btn js-submit" type="submit" value="Submit" onClick={this.handleSubmit}/>
                   </div>
