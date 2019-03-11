@@ -16,14 +16,14 @@ class App extends React.Component {
                     name: 'sample item1',
                     price: 100,
                     text: 'sample1',
-                    img: 'img1'
+                    file: 'file1'
                 },
                 {
                     id: this.createHashId(),
                     name: 'sample item2',
                     price: 200,
                     text: 'sample2',
-                    img: 'img2'
+                    file: 'file2'
                 }
             ],
             searchText: ''
@@ -53,9 +53,9 @@ class App extends React.Component {
     }
 
 
-    callBackAddItem(name, price, text, img){
+    callBackAddItem(name, price, text, file){
         let nextData = this.state.data;
-        nextData.push({id: this.createHashId(), name: name, price: price, text: text, img: img});
+        nextData.push({id: this.createHashId(), name: name, price: price, text: text, file: file});
         this.setState({
             data: nextData
         });

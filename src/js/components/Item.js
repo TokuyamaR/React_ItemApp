@@ -11,7 +11,7 @@ export default class Item extends React.Component{
                     name: this.props.name,
                     price: this.props.price,
                     text: this.props.text,
-                    img: this.props.img,
+                    file: this.props.file,
                 },
                 editMode: false
             };
@@ -34,8 +34,10 @@ export default class Item extends React.Component{
             case 'text':
                 data.text = e.target.value;
                 break;
-            case 'img':
-                data.img = e.target.value;
+            case 'file':
+                data.file = e.target.value;
+                break;
+            default:
                 break;
         }
 
@@ -57,8 +59,8 @@ export default class Item extends React.Component{
         const nameVal = this.state.data.name;
         const priceVal = this.state.data.price;
         const textVal = this.state.data.text;
-        const imgVal = this.state.data.img;
-        if(!(nameVal && priceVal && textVal && imgVal)){
+        const fileVal = this.state.data.file;
+        if(!(nameVal && priceVal && textVal && fileVal)){
             this.setState({
                 errMsg: '未入力の項目があります'
             });
@@ -66,22 +68,16 @@ export default class Item extends React.Component{
         }
 
         this.setState({
-            name: nameVal,
-            price:priceVal,
-            text: textVal,
-            img: imgVal,
+
+            data: {
+                name: nameVal,
+                price: priceVal,
+                text: textVal,
+                file: fileVal
+            },
             errMsg:'',
             editMode: false
         });
-        // this.setState({
-        //     data: {
-        //         name: e.currentTarget.value,
-        //         price: e.currentTarget.value,
-        //         text: e.currentTarget.value,
-        //         img: e.currentTarget.value,
-        //     },
-        //     editMode: false
-        // });
     }
 
     componentWillUnmount(){
@@ -103,10 +99,10 @@ export default class Item extends React.Component{
             <textarea cols="30" rows="10" className="edit editText" name="text" value={this.state.data.text}
                       onChange={this.handleChange}/> :
             <span className="text">{this.state.data.text}</span>;
-        const inputImg = (this.state.editMode) ?
-            <input type="file" className="edit editImg" name="img"
+        const inputfile = (this.state.editMode) ?
+            <input type="file" className="edit editFile" name="file"
                    onChange={this.handleChange}/> :
-            <img className="img" src={this.state.data.img} alt="商品画像"/>;
+            <img className="file" src={this.state.data.file[0]} alt="商品画像"/>;
 
         const classNameBtn = ClassNames({
             'btn close-btn--none': !this.state.editMode,
@@ -129,7 +125,7 @@ export default class Item extends React.Component{
                     {inputName}
                     {inputPrice}
                     {inputText}
-                    {inputImg}
+                    {inputfile}
                     <input type='submit' value='Done' className={classNameBtn} onClick={this.handleClickCloseEdit}/>
                     <i className={classNameIconTrash} onClick={this.handleClickRemove} aria-hidden="true"/>
                     <i className={classNameIconEdit} onClick={this.handleClickShowEdit} aria-hidden="true"/>

@@ -20,7 +20,7 @@ export class ItemList extends React.Component{
                              name={this.props.data[i].name}
                              price={this.props.data[i].price}
                              text={this.props.data[i].text}
-                             img={this.props.data[i].img} onRemove={this.handleRemove}
+                             file={this.props.data[i].file} onRemove={this.handleRemove}
             />);
         }
 
