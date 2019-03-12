@@ -17,13 +17,6 @@ class App extends React.Component {
                     price: 100,
                     text: 'sample1',
                     file: 'file1'
-                },
-                {
-                    id: this.createHashId(),
-                    name: 'sample item2',
-                    price: 200,
-                    text: 'sample2',
-                    file: 'file2'
                 }
             ],
             searchText: ''
