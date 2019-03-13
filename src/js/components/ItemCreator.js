@@ -1,4 +1,5 @@
 import React from 'react';
+import Token from './Token';
 
 export default class ItemCreator extends React.Component{
 
@@ -87,7 +88,8 @@ export default class ItemCreator extends React.Component{
           <div>
               {/*tokenは仮設置*/}
               <div className="token-title left">Token</div>
-              <input type="text" className="inputToken js-get-tokenVal"  name="token" value="" placeholder="Token" onChange={this.handleChangeToken}/>
+              {/*<input type="text" className="inputToken js-get-tokenVal"  name="token" value="" placeholder="Token" onChange={this.handleChangeToken}/>*/}
+              <Token/>
               <form className="form">
                   <div className="inputArea">
                       <div className="creator-title left">Create Item</div>

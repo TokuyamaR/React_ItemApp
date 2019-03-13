@@ -14,7 +14,7 @@ export class TokenInput extends React.Component{
 
     handleChange(e) {
         this.setState({
-            token:e.target.value;
+            token:e.target.value
         });
     }
 
