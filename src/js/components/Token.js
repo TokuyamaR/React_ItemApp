@@ -1,6 +1,6 @@
 import React from "react";
 
-export class TokenInput extends React.Component{
+export default class TokenInput extends React.Component{
 
     constructor(props){
         super(props);
