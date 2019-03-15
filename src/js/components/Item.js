@@ -62,6 +62,7 @@ export default class Item extends React.Component{
         const fileVal = this.state.data.file;
         if(!(nameVal && priceVal && textVal && fileVal)){
             this.setState({
+                editMode: false,
                 errMsg: '未入力の項目があります'
             });
             return;
@@ -89,7 +90,6 @@ export default class Item extends React.Component{
         const inputName = (this.state.editMode) ?
             <input type="text" className="edit editName" name="name" value={this.state.data.name}
                    onChange={this.handleChange}/> :
-            // 編集ボタンをクリックすると編集可能にするが、うまく動かない場合は調整
             <span className="name">{this.state.data.name}</span>;
         const inputPrice = (this.state.editMode) ?
             <input type="text" className="edit editPrice" name="price" value={this.state.data.price}
