@@ -14,7 +14,8 @@ export default class ItemCreator extends React.Component{
                 file: '',
             },
             token:'',
-            errMsg:''
+            errMsg:'',
+            imagePreviewUrl:'',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,7 @@ export default class ItemCreator extends React.Component{
     handleChange(e){
 
         let data = this.state.data;
+        let reader = new FileReader();
 
         switch(e.target.name){
             case 'name':
@@ -43,9 +45,11 @@ export default class ItemCreator extends React.Component{
                 break;
         }
 
-        this.setState({
-            data: data
-        });
+            this.setState({
+                data: data,
+                imagePreviewUrl: reader.result
+            });
+        reader.readAsDataURL(data.file)
     }
 
     handleChangeToken(e){
@@ -82,6 +86,7 @@ export default class ItemCreator extends React.Component{
     }
 
     render(){
+        console.log("imagePreviewUrl=" + this.state.imagePreviewUrl);
         const errMsg = (this.state.errMsg) ? <span className="error">{this.state.errMsg}</span> : '';
 
         return (
@@ -97,6 +102,7 @@ export default class ItemCreator extends React.Component{
                       <input type="text" className="inputText js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
                       <textarea className="inputText textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
                       <input type="file" className="inputFile js-get-fileVal" name="file" onChange={this.handleChange}/>
+                      <img src={this.state.imagePreviewUrl} alt="プレビュー画像"/>
                       {errMsg}
                   <input className="btn js-submit" type="submit" value="Submit" onClick={this.handleSubmit}/>
                   </div>
