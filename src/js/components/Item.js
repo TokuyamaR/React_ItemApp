@@ -35,7 +35,7 @@ export default class Item extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                data.file = e.target.value;
+                data.file = e.target.files[0];
                 break;
             default:
                 break;
