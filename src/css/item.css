@@ -145,6 +145,26 @@ body {
     font-size: 16px;
 }
 
+.file{
+    width: 100px;
+    height: 100px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.itemFlex{
+    display: flex;
+}
+
+
+.itemColumn{
+    /*子要素の縦表示*/
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
 .left {
     text-align: left;
     font-size: 20px;

@@ -122,10 +122,14 @@ export default class Item extends React.Component{
         return (
             <form action="" className="form">
                 <li className="list__item">
-                    {inputName}
-                    {inputPrice}
-                    {inputText}
-                    {inputFile}
+                    <div className='itemFlex'>
+                        {inputFile}
+                        <div className='itemColumn'>
+                            {inputName}
+                            {inputPrice}
+                            {inputText}
+                        </div>
+                    </div>
                     <input type='submit' value='Done' className={classNameBtn} onClick={this.handleClickCloseEdit}/>
                     <i className={classNameIconTrash} onClick={this.handleClickRemove} aria-hidden="true"/>
                     <i className={classNameIconEdit} onClick={this.handleClickShowEdit} aria-hidden="true"/>

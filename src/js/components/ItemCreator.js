@@ -2,7 +2,6 @@ import React from 'react';
 import Token from './Token';
 
 export default class ItemCreator extends React.Component{
-
     constructor(props){
         super(props);
         this.state = {
@@ -24,6 +23,8 @@ export default class ItemCreator extends React.Component{
 
     handleChange(e){
 
+        let createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
+
         let data = this.state.data;
         switch(e.target.name){
             case 'name':
@@ -36,7 +37,9 @@ export default class ItemCreator extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                data.file = e.target.files[0];
+                let files =e.target.files;
+                let image_url = files.length===0 ? "" : createObjectURL(files[0]);
+                data.file = image_url;
                 break;
             default:
                 break;
