@@ -10,7 +10,7 @@ export default class ItemCreator extends React.Component{
                 name: '',
                 price:'',
                 text: '',
-                file: '',
+                file: ''
             },
             token:'',
             errMsg:'',
@@ -37,7 +37,7 @@ export default class ItemCreator extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                let files =e.target.files;
+                let files = e.target.files;
                 let image_url = files.length===0 ? "" : createObjectURL(files[0]);
                 data.file = image_url;
                 break;
@@ -86,6 +86,8 @@ export default class ItemCreator extends React.Component{
     render(){
         const errMsg = (this.state.errMsg) ? <span className="error">{this.state.errMsg}</span> : '';
 
+        let fileMsg = (this.state.data.file) ? "選択済み" : "未選択";
+
         return (
           <div>
               {/*tokenは課題2まで仮設置*/}
@@ -93,13 +95,19 @@ export default class ItemCreator extends React.Component{
               {/*<input type="text" className="inputToken js-get-tokenVal"  name="token" value="" placeholder="Token" onChange={this.handleChangeToken}/>*/}
               <Token/>
               <form className="form">
-                  <div className="inputArea">
+                  <div className="input-area">
                       <div className="creator-title left">Create Item</div>
-                      <input type="text" className="inputText js-get-nameVal" name="name" value={this.state.data.name} placeholder="Item Name" onChange={this.handleChange}/>
-                      <input type="text" className="inputText js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
-                      <textarea className="inputText textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
-                      <input type="file" className="inputFile js-get-fileVal" name="file" onChange={this.handleChange}/>
-                      {errMsg}
+                      <input type="text" className="input-text js-get-nameVal" name="name" value={this.state.data.name} placeholder="Item Name" onChange={this.handleChange}/>
+                      <input type="text" className="input-text js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
+                      <textarea className="input-text textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
+                      <div className="file-container">
+                          <div className="file-form">
+                              画像登録
+                              <input type="file" className="input-file js-get-fileVal" name="file" onChange={this.handleChange}/>
+                          </div>
+                          <span className="file-msg">{fileMsg}</span>
+                      </div>
+                      <div className="error">{errMsg}</div>
                   <input className="btn js-submit" type="submit" value="Submit" onClick={this.handleSubmit}/>
                   </div>
               </form>

@@ -23,6 +23,7 @@ export default class Item extends React.Component{
     handleChange(e){
 
         let data = this.state.data;
+        let createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
         switch(e.target.name){
             case 'name':
@@ -35,7 +36,9 @@ export default class Item extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                data.file = e.target.files[0];
+                let files = e.target.files;
+                let image_url = files.length===0 ? "" : createObjectURL(files[0]);
+                data.file = image_url;
                 break;
             default:
                 break;
@@ -89,19 +92,22 @@ export default class Item extends React.Component{
     render() {
         const inputName = (this.state.editMode) ?
             <input type="text" className="edit editName" name="name" value={this.state.data.name}
-                   onChange={this.handleChange}/> :
+                   placeholder='name' onChange={this.handleChange}/> :
             <span className="name">{this.state.data.name}</span>;
         const inputPrice = (this.state.editMode) ?
             <input type="text" className="edit editPrice" name="price" value={this.state.data.price}
-                   onChange={this.handleChange}/> :
+                   placeholder='price' onChange={this.handleChange}/> :
             <span className="price">{this.state.data.price}</span>;
         const inputText = (this.state.editMode) ?
             <textarea cols="30" rows="10" className="edit editText" name="text" value={this.state.data.text}
-                      onChange={this.handleChange}/> :
+                      placeholder='text' onChange={this.handleChange}/> :
             <span className="text">{this.state.data.text}</span>;
         const inputFile = (this.state.editMode) ?
-            <input type="file" className="edit editFile" name="file"
-                   onChange={this.handleChange}/> :
+            <div className="itemColumn">
+                <img className="file" src={this.state.data.file} alt="商品画像"/>
+                <input type="file" className="edit editFile" name="file"
+                   onChange={this.handleChange}/>
+            </div>:
             <img className="file" src={this.state.data.file} alt="商品画像"/>;
 
         const classNameBtn = ClassNames({

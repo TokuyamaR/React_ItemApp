@@ -19,12 +19,13 @@ body {
     margin-bottom:30px;
 }
 
-.inputArea {
+.input-area {
     margin-bottom: 15px;
 }
 
-.inputText , .inputToken, .inputFile{
+.input-text , .input-token{
     padding:5px;
+    margin-bottom:5px;
     height: 40px;
     font-size:16px;
     width:100%;
@@ -32,13 +33,49 @@ body {
     border: 1px solid #e8e8e8;
 }
 
-.inputToken{
-    margin-bottom:15px;
+.textarea{
+    height: 100px;
 }
 
-.inputFile{
-    border: none;
+.file-container {
+    display: flex;
+    justify-content: left;
+}
+.file-form{
+    width:100px;
+    position: relative;
+    padding: 5px 30px;
+    background: #fff;
+    color: #000;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+}
+
+.file-form:hover{
+    background: #e8e8e8;
+    transition: 0.5s;
+}
+
+.file-msg{
+    height: 40px;
+    line-height: 40px;
+    margin-left: 5px;
+}
+
+.input-file{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     margin-bottom: 20px;
+    position: absolute;
+    opacity: 0;
+}
+
+.input-file:hover{
+    cursor: pointer;
 }
 
 ::-webkit-input-placeholder{
@@ -138,9 +175,7 @@ body {
 }
 
 .editName, .editPrice, .editText, .editFile{
-    width: 80%;
-    height: 100%;
-    border: none;
+    border: 1px solid #e8e8e8 ;
     padding: 5px 10px;
     font-size: 16px;
 }
