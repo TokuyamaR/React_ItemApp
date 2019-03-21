@@ -64,7 +64,7 @@ body {
     margin-left: 5px;
 }
 
-.input-file{
+.input-file, .edit-file{
     top: 0;
     left: 0;
     width: 100%;
@@ -74,7 +74,7 @@ body {
     opacity: 0;
 }
 
-.input-file:hover{
+.input-file:hover, .edit-file:hover{
     cursor: pointer;
 }
 
@@ -174,30 +174,31 @@ body {
     border: 1px solid #e8e8e8;
 }
 
-.editName, .editPrice, .editText, .editFile{
+.edit-name, .edit-price, .edit-text, .edit-file{
     border: 1px solid #e8e8e8 ;
     padding: 5px 10px;
     font-size: 16px;
 }
 
 .file{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin-left: 15px;
     margin-right: 15px;
 }
 
-.itemFlex{
+.item-flex{
     display: flex;
 }
 
 
-.itemColumn{
+.item-column{
     /*子要素の縦表示*/
     display: flex;
     flex-direction:column;
     flex-wrap: wrap;
     text-align: left;
+    margin-left: 20px;
 }
 
 .left {
