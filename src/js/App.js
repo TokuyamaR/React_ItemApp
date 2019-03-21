@@ -16,14 +16,14 @@ class App extends React.Component {
                     name: 'sample item1',
                     price: 100,
                     text: 'sample1',
-                    file: 'file1'
+                    file: "sample1"
                 },
                 {
                     id: this.createHashId(),
                     name: 'sample item2',
                     price: 200,
                     text: 'sample2',
-                    file: 'file2'
+                    file: "sample2"
                 },
             ],
             searchText: ''

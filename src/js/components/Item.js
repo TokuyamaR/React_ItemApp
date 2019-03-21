@@ -23,6 +23,7 @@ export default class Item extends React.Component{
     handleChange(e){
 
         let data = this.state.data;
+        let createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
         switch(e.target.name){
             case 'name':
@@ -35,7 +36,9 @@ export default class Item extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                data.file = e.target.value;
+                let files = e.target.files;
+                let image_url = files.length===0 ? "" : createObjectURL(files[0]);
+                data.file = image_url;
                 break;
             default:
                 break;
@@ -87,21 +90,32 @@ export default class Item extends React.Component{
 
     // 編集可能か否かで入力欄の状態を変化させる
     render() {
+
+        let fileMsg = (this.state.data.file) ? "選択済み" : "未選択";
+
         const inputName = (this.state.editMode) ?
-            <input type="text" className="edit editName" name="name" value={this.state.data.name}
-                   onChange={this.handleChange}/> :
+            <input type="text" className="edit edit-name" name="name" value={this.state.data.name}
+                   placeholder='name' onChange={this.handleChange}/> :
             <span className="name">{this.state.data.name}</span>;
         const inputPrice = (this.state.editMode) ?
-            <input type="text" className="edit editPrice" name="price" value={this.state.data.price}
-                   onChange={this.handleChange}/> :
+            <input type="text" className="edit edit-price" name="price" value={this.state.data.price}
+                   placeholder='price' onChange={this.handleChange}/> :
             <span className="price">{this.state.data.price}</span>;
         const inputText = (this.state.editMode) ?
-            <textarea cols="30" rows="10" className="edit editText" name="text" value={this.state.data.text}
-                      onChange={this.handleChange}/> :
+            <textarea cols="30" rows="10" className="edit edit-text" name="text" value={this.state.data.text}
+                      placeholder='text' onChange={this.handleChange}/> :
             <span className="text">{this.state.data.text}</span>;
         const inputFile = (this.state.editMode) ?
-            <input type="file" className="edit editFile" name="file"
-                   onChange={this.handleChange}/> :
+            <div className="itemColumn">
+                <img className="file" src={this.state.data.file} alt="商品画像"/>
+                <div className="file-container">
+                    <div className="file-form">
+                        画像登録
+                        <input type="file" className="edit edit-file" name="file" onChange={this.handleChange}/>
+                    </div>
+                    <span className="file-msg">{fileMsg}</span>
+                </div>
+            </div> :
             <img className="file" src={this.state.data.file} alt="商品画像"/>;
 
         const classNameBtn = ClassNames({
@@ -115,17 +129,21 @@ export default class Item extends React.Component{
         });
 
         const classNameIconEdit = ClassNames({
-            'fas fa-edit icon-edit': !this.state.editMode,
-            'fas fa-edit icon-edit--none': this.state.editMode
+            'fas fa-lg fa-edit icon-edit': !this.state.editMode,
+            'fas fa-lg fa-edit icon-edit--none': this.state.editMode
         });
 
         return (
             <form action="" className="form">
                 <li className="list__item">
-                    {inputName}
-                    {inputPrice}
-                    {inputText}
-                    {inputFile}
+                    <div className='item-flex'>
+                        {inputFile}
+                        <div className='item-column'>
+                            {inputName}
+                            {inputPrice}
+                            {inputText}
+                        </div>
+                    </div>
                     <input type='submit' value='Done' className={classNameBtn} onClick={this.handleClickCloseEdit}/>
                     <i className={classNameIconTrash} onClick={this.handleClickRemove} aria-hidden="true"/>
                     <i className={classNameIconEdit} onClick={this.handleClickShowEdit} aria-hidden="true"/>

@@ -2,7 +2,6 @@ import React from 'react';
 import Token from './Token';
 
 export default class ItemCreator extends React.Component{
-
     constructor(props){
         super(props);
         this.state = {
@@ -11,11 +10,10 @@ export default class ItemCreator extends React.Component{
                 name: '',
                 price:'',
                 text: '',
-                file: '',
+                file: ''
             },
             token:'',
             errMsg:'',
-            imagePreviewUrl:'',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,9 +23,9 @@ export default class ItemCreator extends React.Component{
 
     handleChange(e){
 
-        let data = this.state.data;
-        let reader = new FileReader();
+        let createObjectURL = (window.URL || window.webkitURL).createObjectURL || window.createObjectURL;
 
+        let data = this.state.data;
         switch(e.target.name){
             case 'name':
                 data.name = e.target.value;
@@ -39,7 +37,9 @@ export default class ItemCreator extends React.Component{
                 data.text = e.target.value;
                 break;
             case 'file':
-                data.file = e.target.files[0];
+                let files = e.target.files;
+                let image_url = files.length===0 ? "" : createObjectURL(files[0]);
+                data.file = image_url;
                 break;
             default:
                 break;
@@ -47,9 +47,7 @@ export default class ItemCreator extends React.Component{
 
             this.setState({
                 data: data,
-                imagePreviewUrl: reader.result
             });
-        reader.readAsDataURL(data.file)
     }
 
     handleChangeToken(e){
@@ -86,8 +84,9 @@ export default class ItemCreator extends React.Component{
     }
 
     render(){
-        console.log("imagePreviewUrl=" + this.state.imagePreviewUrl);
         const errMsg = (this.state.errMsg) ? <span className="error">{this.state.errMsg}</span> : '';
+
+        let fileMsg = (this.state.data.file) ? "選択済み" : "未選択";
 
         return (
           <div>
@@ -96,14 +95,19 @@ export default class ItemCreator extends React.Component{
               {/*<input type="text" className="inputToken js-get-tokenVal"  name="token" value="" placeholder="Token" onChange={this.handleChangeToken}/>*/}
               <Token/>
               <form className="form">
-                  <div className="inputArea">
+                  <div className="input-area">
                       <div className="creator-title left">Create Item</div>
-                      <input type="text" className="inputText js-get-nameVal" name="name" value={this.state.data.name} placeholder="Item Name" onChange={this.handleChange}/>
-                      <input type="text" className="inputText js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
-                      <textarea className="inputText textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
-                      <input type="file" className="inputFile js-get-fileVal" name="file" onChange={this.handleChange}/>
-                      <img src={this.state.imagePreviewUrl} alt="プレビュー画像"/>
-                      {errMsg}
+                      <input type="text" className="input-text js-get-nameVal" name="name" value={this.state.data.name} placeholder="Item Name" onChange={this.handleChange}/>
+                      <input type="text" className="input-text js-get-priceVal" name="price" value={this.state.data.price} placeholder="Item Price" onChange={this.handleChange}/>
+                      <textarea className="input-text textarea js-get-textVal" name="text" value={this.state.data.text} placeholder="Item Text" onChange={this.handleChange}/>
+                      <div className="file-container">
+                          <div className="file-form">
+                              画像登録
+                              <input type="file" className="input-file js-get-fileVal" name="file" onChange={this.handleChange}/>
+                          </div>
+                          <span className="file-msg">{fileMsg}</span>
+                      </div>
+                      <div className="error">{errMsg}</div>
                   <input className="btn js-submit" type="submit" value="Submit" onClick={this.handleSubmit}/>
                   </div>
               </form>
