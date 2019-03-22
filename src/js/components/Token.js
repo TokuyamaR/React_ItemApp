@@ -13,9 +13,17 @@ export default class TokenInput extends React.Component{
     }
 
     handleChange(e) {
-        this.setState({
-            token:e.target.value
-        });
+
+        if(!this.state.token) {
+
+            this.setState({
+                token_errMsg:'tokenが入力されていません'
+            });
+            return;
+        }
+            this.setState({
+                token: e.target.value
+            });
     }
 
     render(){
