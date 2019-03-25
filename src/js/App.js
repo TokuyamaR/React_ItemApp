@@ -10,22 +10,7 @@ class App extends React.Component {
     constructor(){
         super();
         this.state = {
-            data: [
-                {
-                    id: this.createHashId(),
-                    name: 'sample item1',
-                    price: 100,
-                    text: 'sample1',
-                    file: "sample1"
-                },
-                {
-                    id: this.createHashId(),
-                    name: 'sample item2',
-                    price: 200,
-                    text: 'sample2',
-                    file: "sample2"
-                },
-            ],
+            data: [],
             searchText: ''
         };
 
