@@ -74,6 +74,7 @@ export default class Item extends React.Component{
         this.setState({
 
             data: {
+                id: this.props.id,
                 name: nameVal,
                 price: priceVal,
                 text: textVal,

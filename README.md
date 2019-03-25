@@ -1,68 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#[フロント課題Reactを使ったSPAの作成](https://docs.google.com/document/d/1maWJmuORM0IDGAhfSUhXEBtFzvHLGiB7cjB2rhfHiVM/edit)
 
-## Available Scripts
+## 目次  
 
-In the project directory, you can run:
+ - コードベース、コンポーネント図作成まで
+ - ダミーデータを使い一通りの機能を実装するまで
+ - APIを利用したSPAを作成するまで
+ - Material-UIによるデザインの適用
+ ---
 
-### `npm start`
+## コードベースの作成まで
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ - node.jsのインストール
+ - npm(node.js管理パッケージツール)のインストール
+ - Reactアプリのコードベースの作成
+ - コンポーネント設計図作成
+ - データフロー図作成
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### node.jsのインストール
 
-### `npm test`
+インストールされているかの確認
+```
+# versionが表示されていればインストール済み
+$ node -v
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+nodebrewのインストール
+```
+# versionが表示されていればインストール済み
+$ brew install nodebrew
 
-### `npm run build`
+# 環境パスを設定
+echo 'export PATH=$HOME/.nodebrew/current/bin:$PATH' >> ~/.bash_profile
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 「ターミナルを再起動」後、必要なバージョンをインストール（今回は最新版）
+$ nodebrew install-binary latest
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+# ダウンロードしたvirsionがダウロードされているか確認し、必ず有効化する
+$ nodebrew ls
+$ nodebrew use [使用するvirsion]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 再度nodeのvirsionを確認し、インストールしたvirsionが表示されていればOK
+$ node -v
+```
+### npm(node.js管理パッケージツール)のインストール
 
-### `npm run eject`
+virsionを確認し、確認できないまたは古いvirsionの場合はinstallする
+```
+$ npm --version
+$ npm install npm -g
+```
+### Reactアプリのコードベースの作成、サーバー起動
+```
+# プロジェクト用のフォルダを作成後、プロジェクトファイルを下記のコマンドで作成する
+$ npm install -g create-react-app
+$ create-react-app [projedct name]
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# サーバーの立ち上げ
+$ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Component設計およびデータフローの作成
+[draw.io](https://www.draw.io/)にて作成  
+今回作成したcomponent図は[こちら](https://drive.google.com/file/d/1_X4RkgMoB8XAdZzm7yG9VY2vPSR026kk/view?usp=sharing)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### ディレクトリ構成
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+React_itemApp
+└- src
+  |- css
+  |  └- item.css
+  |  
+  └- js
+     |- App.js // app全体を描画
+     └- components
+        |- AuthSearvice.js // 未実装(不要になる可能性あり)
+        |- Item.js // 商品1つのコンポーネント
+        |- ItemCreator.js // 商品作成用コンポーネント
+        |- ItemList.js // 商品リストのコンポーネント
+        |- ItemSearch.js // 商品検索用コンポーネント
+        └- Token.js // トークン入力用コンポーネント
 
-## Learn More
+###  参照ページ
+[React.js チュートリアル[超入門] #0 概要](https://note.mu/natsukingdom/n/n4b856ac4e4fd?magazine_key=me5fa275da270)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+--- 
