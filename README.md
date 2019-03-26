@@ -73,7 +73,7 @@ React_itemApp
   └- js
      |- App.js // app全体を描画
      └- components
-        |- AuthSearvice.js // 未実装(不要になる可能性あり)
+        |- AuthService.js // 未実装(不要になる可能性あり)
         |- Item.js // 商品1つのコンポーネント
         |- ItemCreator.js // 商品作成用コンポーネント
         |- ItemList.js // 商品リストのコンポーネント
