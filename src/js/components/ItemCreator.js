@@ -92,7 +92,6 @@ export default class ItemCreator extends React.Component{
           <div>
               {/*tokenは課題2まで仮設置*/}
               <div className="token-title left">Token</div>
-              {/*<input type="text" className="inputToken js-get-tokenVal"  name="token" value="" placeholder="Token" onChange={this.handleChangeToken}/>*/}
               <Token/>
               <form className="form">
                   <div className="input-area">
